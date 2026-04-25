@@ -1,0 +1,51 @@
+services:
+  frontend:
+    image: node:20
+    container_name: frontend
+    volumes:
+      - ./frontend:/workspace
+    working_dir: /workspace/app
+    # command: sleep infinity
+    command: sh -c "npm run dev"
+    ports:
+      - "5173:5173"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+  backend:
+    image: maven:3.9-eclipse-temurin-17
+    container_name: backend
+    volumes:
+      - ./backend:/workspace
+    working_dir: /workspace/demo
+    # command: sleep infinity
+    command: mvn spring-boot:run
+    ports:
+      - "8080:8080"
+    depends_on:
+      - cache
+      - db
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+
+  cache:
+    image: redis:7
+    container_name: cache
+    ports:
+      - "6379:6379"
+  db:
+    image: postgres:16
+    container_name: db
+    environment:
+      POSTGRES_DB: demo
+      POSTGRES_USER: demo
+      POSTGRES_PASSWORD: demo
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db/db-data:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d

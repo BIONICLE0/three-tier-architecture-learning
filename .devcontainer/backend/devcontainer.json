@@ -1,0 +1,13 @@
+{
+  "name": "spring-react-dev",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "backend",
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vmware.vscode-boot-dev-pack"
+      ]
+    }
+  }
+}

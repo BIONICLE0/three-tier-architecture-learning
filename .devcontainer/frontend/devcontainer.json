@@ -1,0 +1,19 @@
+{
+  "name": "frontend",
+  "dockerComposeFile": "../../docker-compose.yml",
+  "service": "frontend",
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "dsznajder.es7-react-js-snippets",
+        "burkeholland.simple-react-snippets",
+        "formulahendry.auto-rename-tag",
+        "christian-kohler.path-intellisense",
+        "bradlc.vscode-tailwindcss"
+      ]
+    }
+  }
+}
