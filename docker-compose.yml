@@ -5,7 +5,6 @@ services:
     volumes:
       - ./frontend:/workspace
     working_dir: /workspace/app
-    # command: sleep infinity
     command: sh -c "npm run dev"
     ports:
       - "5173:5173"
@@ -19,7 +18,6 @@ services:
     volumes:
       - ./backend:/workspace
     working_dir: /workspace/demo
-    # command: sleep infinity
     command: mvn spring-boot:run
     ports:
       - "8080:8080"
