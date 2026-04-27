@@ -1,6 +1,12 @@
 services:
   frontend:
     command: sleep infinity
+    depends_on:
+      backend:
+        condition: service_started
 
   backend:
     command: sleep infinity
+
+    healthcheck:
+      disable: true
