@@ -1,6 +1,9 @@
 {
-  "name": "spring-react-dev",
-  "dockerComposeFile": "../docker-compose.yml",
+  "name": "springboot-backend",
+  "dockerComposeFile": [
+    "../../docker-compose.yml",
+    "../../docker-compose-dev-container.yml"
+  ],
   "service": "backend",
   "workspaceFolder": "/workspace",
   "customizations": {
